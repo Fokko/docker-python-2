@@ -9,6 +9,7 @@ RUN update-ca-certificates -f \
     wget \
     git \
     npm \
+    nodejs-legacy \
     libatlas3-base \
     libopenblas-base \
     postgresql-client \
