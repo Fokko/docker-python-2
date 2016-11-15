@@ -49,6 +49,13 @@ RUN wget -O ./bin/sbt https://raw.githubusercontent.com/paulp/sbt-extras/master/
   && chmod 0755 ./bin/sbt \
   && ./bin/sbt -v -211 -sbt-create about
 
+ENV PHANTOM_JS phantomjs-1.9.8-linux-x86_64
 
+RUN cd /tmp/ \
+ && wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2 \
+ && tar xvjf $PHANTOM_JS.tar.bz2 \
+ && rm $PHANTOM_JS.tar.bz2 \
+ && mv $PHANTOM_JS /usr/local/share \
+ && ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
 
 CMD /usr/spark/bin/spark-class org.apache.spark.deploy.master.Master
