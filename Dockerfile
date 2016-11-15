@@ -10,6 +10,7 @@ RUN update-ca-certificates -f \
     git \
     libatlas3-base \
     libopenblas-base \
+    postgresql-client \
   && apt-get clean \
   && git config --global http.sslverify false
 
