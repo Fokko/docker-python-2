@@ -8,6 +8,7 @@ RUN update-ca-certificates -f \
   && apt-get install -y \
     wget \
     git \
+    npm \
     libatlas3-base \
     libopenblas-base \
     postgresql-client \
