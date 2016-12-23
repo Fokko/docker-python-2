@@ -29,10 +29,10 @@ RUN cd /opt/ \
 
 # SPARK
 RUN cd /usr/ \
-  && wget http://d3kbcqa49mib13.cloudfront.net/spark-1.6.1-bin-hadoop2.6.tgz \
-  && tar xzf spark-1.6.1-bin-hadoop2.6.tgz \
-  && rm spark-1.6.1-bin-hadoop2.6.tgz \
-  && mv spark-1.6.1-bin-hadoop2.6 spark
+  && wget http://d3kbcqa49mib13.cloudfront.net/spark-1.6.3-bin-hadoop2.6.tgz \
+  && tar xzf spark-1.6.3-bin-hadoop2.6.tgz \
+  && rm spark-1.6.3-bin-hadoop2.6.tgz \
+  && mv spark-1.6.3-bin-hadoop2.6 spark
 
 ENV SPARK_HOME /usr/spark
 ENV PYTHONPATH $SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.9-src.zip
@@ -57,5 +57,7 @@ RUN cd /tmp/ \
  && rm $PHANTOM_JS.tar.bz2 \
  && mv $PHANTOM_JS /usr/local/share \
  && ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
+
+RUN pip install pytest airflow
 
 CMD /usr/spark/bin/spark-class org.apache.spark.deploy.master.Master
